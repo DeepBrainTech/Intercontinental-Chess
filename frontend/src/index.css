@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@700&family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --board-light: #eaddcf;
+  --board-dark: #a87b51;
+  --move-hint: rgba(0, 100, 0, 0.4);
+  --capture-hint: rgba(200, 0, 0, 0.5);
+}
+
+@theme {
+  --color-board-light: var(--board-light);
+  --color-board-dark: var(--board-dark);
+  --color-move-hint: var(--move-hint);
+  --color-capture-hint: var(--capture-hint);
+  --font-serif-sc: "Noto Serif SC", serif;
+  --font-roboto: Roboto, sans-serif;
+}
+
+body {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  font-family: var(--font-roboto);
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Match original style */
+}
