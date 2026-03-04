@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { socket } from './socket';
 import { GameInfo } from './components/GameInfo';
+import { Board } from './components/Board';
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -27,17 +28,28 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col items-center justify-center p-4 font-roboto">
-      <div className="mb-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-yellow-500 mb-2 tracking-wider font-serif-sc">
+      <div className="mb-4 text-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-yellow-500 mb-2 tracking-wider font-serif-sc">
           Intercontinental Chess
         </h1>
-        <p className="text-gray-400 italic">Pre-Alpha Build</p>
       </div>
 
-      <GameInfo isConnected={isConnected} lastPing={lastPing} />
+      <div className="flex flex-col xl:flex-row gap-8 items-start justify-center w-full max-w-7xl">
+        {/* Left Side: Game Board */}
+        <div className="flex-1 flex justify-center w-full">
+            <Board />
+        </div>
 
-      <div className="mt-8 text-sm text-gray-600">
-        Waiting for game logic migration...
+        {/* Right Side: Info Panel */}
+        <div className="w-full xl:w-96 flex flex-col gap-4">
+             <GameInfo isConnected={isConnected} lastPing={lastPing} />
+             
+             {/* Future: Chat, Move History, etc. */}
+             <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-sm text-gray-400">
+                <p>Move: Click piece -&gt; Click target</p>
+                <p>Rules: Standard + Empire + African</p>
+             </div>
+        </div>
       </div>
     </div>
   );
